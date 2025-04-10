@@ -24,6 +24,15 @@ public class Main {
                     System.out.print("ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();
+                    if (manager.searchById(id) != null) {
+                        System.out.println("ID already exists. Try again.");
+                        break;
+                    }
+                    // check the id length must be gretater than 4
+                    if (String.valueOf(id).length() < 4) {
+                        System.out.println("ID must be at least 4 digits long. Try again.");
+                        break;
+                    }
                     System.out.print("Name: ");
                     String name = sc.nextLine();
                     System.out.print("GPA: ");
@@ -58,6 +67,7 @@ public class Main {
                 case 6:
                     manager.sortByGpaDescending();
                     System.out.println("Sorted by GPA (Descending).");
+                    manager.listStudents();
                     break;
                 case 0:
                     System.out.println("Exiting...");
